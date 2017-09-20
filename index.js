@@ -17,9 +17,7 @@ app.use(bodyParser.json());
 
 // This responds with "Hello World" on the homepage
 app.get('/', function (req, res) {
-   console.log("Got a GET request");
-//    res.render('index.html');   
-   res.send(JSON.parse('{"Hi":"Hello GET"}'));
+   res.render('index.html');   
 })
 
 // This responds a POST request for the homepage
