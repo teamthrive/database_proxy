@@ -3,6 +3,9 @@ var app = express();
 var bodyParser = require('body-parser');
 var request = require('request');
 
+app.set('port', (process.env.PORT || 8081));
+app.use(express.static(__dirname + '/'));
+
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -40,6 +43,6 @@ app.post('/', function (req, res) {
     });
 })
 
-var server = app.listen(8081, function () {
-   console.log("Example app listening at port 8081");
+var server = app.listen(app.get('port'), function () {
+   console.log("Example app listening at port ", app.get('port'));
 })
