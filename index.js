@@ -13,10 +13,10 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 // This responds with "Hello World" on the homepage
-// app.get('/', function (req, res) {
-//    console.log("Got a GET request");
-//    res.send(JSON.parse('{"Hi":"Hello GET"}'));
-// })
+app.get('/', function (req, res) {
+   console.log("Got a GET request");
+   res.send(JSON.parse('{"Hi":"Hello GET"}'));
+})
 
 // This responds a POST request for the homepage
 app.post('/', function (req, res) {
