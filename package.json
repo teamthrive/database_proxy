@@ -9,7 +9,6 @@
     "request": "^2.82.0"
   },
   "devDependencies": {
-    "del": "^3.0.0"
   },
   "engines": {
     "node": "6.10.0",
