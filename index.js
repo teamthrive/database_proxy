@@ -54,7 +54,11 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 const bodyParser = require("body-parser");
 
-// app.use(bodyParser.json());
+
+app.set('port', (process.env.PORT || 8081));
+app.use(express.static(__dirname + '/'));
+app.use(bodyParser.json());
+
 var db;
 var conString = "mongodb://teamthrive:teamthrive123@ds044907.mlab.com:44907/thrive_signups"
 /**
@@ -100,9 +104,9 @@ app.all("/*", function(req, res, next){
   next();
 });
 // Send all other requests to the Angular app
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist/index.html'));
-});
+app.get('/', function (req, res) {
+   res.render('index.html');   
+})
 
 app.post('/api/contact', cors(), (req, res) => {
   console.log('Got a POST request!');
@@ -115,14 +119,9 @@ app.post('/api/contact', cors(), (req, res) => {
 });
 
 //Set Port
-const port = process.env.PORT || '3000';
-app.set('port', port);
-
-const server = http.createServer(app);
-
-server.listen(port, () => {
-  console.log(`Running on localhost:${port}`)
-});
+var server = app.listen(app.get('port'), function () {
+   console.log("Example app listening at port ", app.get('port'));
+})
 
 
 //Options
