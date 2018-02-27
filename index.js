@@ -47,7 +47,7 @@
 // })
 
 const express = require('express');
-// const path = require('path');
+const path = require('path');
 // const http = require('http');
 const app = express();
 const mongoose = require('mongoose')
@@ -93,7 +93,7 @@ function saveData(fn, ln, em) {
 }
 
 // Angular DIST output folder
-app.use(express.static(path.join(__dirname, 'dist')));
+// app.use(express.static(path.join(__dirname, 'dist')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}) );
 
