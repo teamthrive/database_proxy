@@ -108,7 +108,7 @@ app.get('/', function (req, res) {
    res.render('index.html');   
 })
 
-app.post('/api/contact', cors(), (req, res) => {
+app.post('/', cors(), (req, res) => {
   console.log('Got a POST request!');
   var contact = req.body;
   var firstName = contact['firstname'];
