@@ -82,11 +82,14 @@ mongoose.connect(conString, (err, database) => {
     saveData("deploy", "1", "2@3.com")
 })
 
-function saveData(fn, ln, em) {
+function saveData(fn, ln, em, st, wt, ai) {
   var userObject = {
       firstName: fn,
       lastName: ln,
-      email: em
+      email: em,
+      state: st,
+      workType: wt,
+      annualIncome: ai
   }
   var user = new User(userObject);
   user.save();
@@ -114,8 +117,11 @@ app.post('/', cors(), (req, res) => {
   var firstName = contact['firstname'];
   var lastName = contact['lastname']
   var email = contact['email'];
+  var state = contact['state'];
+  var workType = contact['workType'];
+  var annualIncome = contact['annualIncome'];
 
-  saveData(firstName, lastName, email);
+  saveData(firstName, lastName, email, state, workType, annualIncome);
 });
 
 //Set Port
